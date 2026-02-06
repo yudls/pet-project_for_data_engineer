@@ -1,16 +1,20 @@
 # pet-project_for_data_engineer
 
+Для установки и настройки необходимо выполнить в терминале директории проекта следующие команды:
+
 1. Добавить виртуальное окружение 
 ```bash
 python3 -m venv venv
 ```
+
 2. Запустить виртуальное окружение
 ```bash
 source venv/bin/activate
 ```
 
 3. Добавить в директорию файл `.env` со следующим содержанием:
-```
+```bash
+cat > .env << 'EOF'
 # Airflow
 AIRFLOW_UID=50000
 AIRFLOW_PROJ_DIR=.
@@ -19,9 +23,10 @@ AIRFLOW_IMAGE_NAME=apache/airflow:3.1.6
 # Airflow Web UI credentials
 _AIRFLOW_WWW_USER_USERNAME=airflow
 _AIRFLOW_WWW_USER_PASSWORD=airflow
+EOF
 ```
 
-4. Выполнить команду в терменале корневой директории проекта
+4. Выполнить команду в терминале корневой директории проекта
 ```bash
 docker-compose up -d
 ```
