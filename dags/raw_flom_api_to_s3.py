@@ -15,7 +15,7 @@ LAYER = 'raw'
 SOURCE = ''
 
 # S3
-ACCES_KEY = Variable.get('acces_key')
+ACCES_KEY = Variable.get('access_key')
 SECRET_KEY = Variable.get('secret_key')
 
 LONG_DESCRIPTION = '''
@@ -76,13 +76,13 @@ def get_and_transfer_api_data_to_s3(**context):
 
 with DAG(
     dag_id=DAG_ID,
-    schedule_interval="0 5 * * *",
+    schedule="0 5 * * *",
     default_args=args,
     tags=["s3", "raw"],
     description=SHORT_DESCRIPTION,
-    concurrency=1,
-    max_active_tasks=1,
     max_active_runs=1,
+    catchup=False,
+    is_paused_upon_creation=False
 ) as dag:
     dag.doc_md = LONG_DESCRIPTION
 
